@@ -1,13 +1,13 @@
-// import React, { useState } from 'react'
 import { useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import { KEYS } from './keys/secret';
 
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('');
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=84a35bade62155fdbf841a131dd35c73`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${KEYS.REACT_APP_API_WEATHER_KEY}`;
 
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
