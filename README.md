@@ -4,13 +4,13 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<!-- - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh -->
 
 
 'npm run dev'
 
-```
+<!-- ```
 <a href="https://www.freepik.com/free-photo/cloud-blue-sky_1017702.htm#query=sunny%20weather&position=0&from_view=keyword&track=ais">Image by jannoon028</a> on Freepik
 
 <a href="https://www.freepik.com/free-photo/white-cloud-blue-sky_3707296.htm#query=sunny%20weather&position=1&from_view=keyword&track=ais#position=1&query=sunny%20weather"> Image by lifeforstock </a>
@@ -24,4 +24,4 @@ Currently, two official plugins are available:
 <a href="https://www.freepik.com/free-photo/amazing-beautiful-sky-with-clouds_10472846.htm#query=rain%20weather%20night&position=1&from_view=search&track=ais">Image by user3802032</a> on Freepik
 
 Image by <a href="https://www.freepik.com/free-photo/low-angle-nature-night-time_5481670.htm#query=clear%20weather%20night&position=15&from_view=search&track=ais">Freepik</a>
-```
+``` -->
