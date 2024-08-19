@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { KEYS } from './keys/secret';
 import Main from './components/main';
+import { errorResponse } from './helper/utils';
 
 function App() {
   const [data, setData] = useState({});
@@ -18,10 +19,7 @@ function App() {
           setData(response.data);
           console.log(response.data);
         })
-        .catch((error) => {
-          console.log(error)
-          console.log(error.response.data.cod)
-        });
+        .catch((error) => errorResponse(error));
       setLocation('');
     }
   };
@@ -33,7 +31,7 @@ function App() {
           <input
             value={location}
             onChange={(event) => setLocation(event.target.value)}
-            onKeyPress={searchLocation}
+            onKeyDown={searchLocation}
             placeholder="Enter Location"
             type="text"
           />
