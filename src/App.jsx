@@ -4,10 +4,20 @@ import axios from 'axios';
 import { KEYS } from './keys/secret';
 import Main from './components/main';
 import { errorResponse } from './helper/utils';
+import MyPopup from './components/popup';
 
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState('');
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${KEYS.REACT_APP_API_WEATHER_KEY}`;
 
@@ -27,6 +37,8 @@ function App() {
   return (
     <>
       <div className="app">
+        <button onClick={handleOpenPopup}>Open Popup</button>
+        {isPopupOpen && <MyPopup onClose={handleClosePopup} />}
         <div className="search">
           <input
             value={location}
