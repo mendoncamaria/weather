@@ -36,7 +36,8 @@ function App() {
 
   return (
     <>
-      <div className="app">
+        <p style={{fontWeight: 'bold', fontSize: '5rem'}}>We are currently upgrading. Please come back later!</p>
+      {/* <div className="app">
         <button onClick={handleOpenPopup}>Open Popup</button>
         {isPopupOpen && <MyPopup onClose={handleClosePopup} />}
         <div className="search">
@@ -66,7 +67,7 @@ function App() {
         >
           Maria Mendonca
         </a>
-      </footer>
+      </footer> */}
     </>
   );
 }
