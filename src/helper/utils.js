@@ -1,3 +1,5 @@
+import { countries } from "../data/countryMap";
+
 export function convertTimestampToTime(timestamp) {
     // Create a new Date object from the timestamp
     const date = new Date(timestamp * 1000); // Multiply by 1000 as timestamps are in seconds
@@ -42,3 +44,8 @@ export function errorResponse(error) {
         console.log('Something is wrong! Please try again later');
     }
   }
+
+export function getCountryByCode (countryCode) {
+  const countryName = countries.filter((code) => code.iso2 === countryCode)
+  return countryName[0].country
+}
