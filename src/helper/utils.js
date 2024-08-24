@@ -1,15 +1,13 @@
 import { countries } from '../data/countryMap';
 
 export function convertTimestampToTime(timestamp) {
-  // Create a new Date object from the timestamp
-  const date = new Date(timestamp * 1000); // Multiply by 1000 as timestamps are in seconds
+  const date = new Date(timestamp * 1000);
 
-  // Format the date as desired
   const options = {
     hour: 'numeric',
     minute: 'numeric',
     second: 'numeric',
-    hour12: true, // Use 12-hour format
+    hour12: true,
   };
   const formattedTime = date.toLocaleTimeString('en-US', options);
 
@@ -53,16 +51,25 @@ export function getCountryByCode(countryCode) {
 export function getToday() {
   const now = new Date();
   const options = {
-    hour12: false,
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
     day: 'numeric',
     month: 'long',
     year: 'numeric',
     weekday: 'long',
   };
 
+  const formattedDate = now.toLocaleString('en-IN', options);
+  return formattedDate;
+}
+
+export function getTime() {
+  const now = new Date();
+  const options = {
+    hour12: false,
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+  };
+
   const formattedTime = now.toLocaleString('en-IN', options);
-  return formattedTime
+  return formattedTime;
 }
