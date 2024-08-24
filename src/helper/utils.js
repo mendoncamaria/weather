@@ -49,3 +49,20 @@ export function getCountryByCode(countryCode) {
   const countryName = countries.filter((code) => code.iso2 === countryCode);
   return countryName[0].country;
 }
+
+export function getToday() {
+  const now = new Date();
+  const options = {
+    hour12: false,
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    weekday: 'long',
+  };
+
+  const formattedTime = now.toLocaleString('en-IN', options);
+  return formattedTime
+}
