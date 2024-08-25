@@ -24,7 +24,7 @@ function Header() {
       style={{
         display: 'flex',
         justifyContent: 'space-between',
-        padding: '1.5rem',
+        // padding: '1.5rem',
         alignItems: 'center',
       }}
     >
