@@ -1,8 +1,22 @@
 import Header from '../components/Header';
 import { useState } from 'react';
+import London from '../assets/London.jpeg';
+import Dubai from '../assets/Dubai.jpeg';
+import Melbourne from '../assets/Mebourne.jpeg';
+import NewYork from '../assets/NewYork.jpeg';
+import Pretoria from '../assets/Pretoria.jpeg';
+import { ImageContainer } from '../components/ImageContainer';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
+
+  const images = [
+    { src: London, alt: 'London' },
+    { src: Dubai, alt: 'Dubai' },
+    { src: Melbourne, alt: 'Melbourne' },
+    { src: NewYork, alt: 'New York' },
+    { src: Pretoria, alt: 'Pretoria' },
+  ];
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
@@ -23,9 +37,26 @@ function Dashboard() {
   return (
     <div style={{ display: 'flex' }}>
       <div
-        style={{ backgroundColor: '#f1f1f1', width: '70vw', height: '100vh' }}
+        style={{
+          backgroundColor: '#f1f1f1',
+          width: '70vw',
+          height: '100vh',
+          padding: '2rem',
+        }}
       >
         <Header />
+        <div
+          style={{
+            display: 'flex',
+            gap: '1rem',
+            paddingTop: '1rem',
+            justifyContent: 'center',
+          }}
+        >
+          {images.map((image) => (
+            <ImageContainer key={image.src} {...image} />
+          ))}
+        </div>
       </div>
       <div
         style={{
