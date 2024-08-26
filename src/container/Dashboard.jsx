@@ -5,6 +5,8 @@ import { IMAGES } from '../data/constants';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
+  const [userLatitude, setUserLatitude] = useState(null);
+  const [userLongitude, setUserLongitude] = useState(null);
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
@@ -22,12 +24,16 @@ function Dashboard() {
     }
   };
 
-  const getImageCoordinates = (image) => {
-    console.log(image);
+  const getImageCoordinates = (value) => {
+    console.log(value);
+    setUserLatitude(value.lat);
+    setUserLongitude(value.lon);
   };
 
   return (
     <div style={{ display: 'flex' }}>
+      {console.log(userLatitude, 'userLatitude')}
+      {console.log(userLongitude, 'userLongitude')}
       <div
         style={{
           backgroundColor: '#f1f1f1',
@@ -42,7 +48,7 @@ function Dashboard() {
             display: 'flex',
             gap: '1rem',
             paddingTop: '1rem',
-            justifyContent: 'center',
+            justifyContent: 'left',
           }}
         >
           {IMAGES.map((image) => (
