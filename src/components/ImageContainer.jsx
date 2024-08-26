@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types';
 
 const imageContainerStyle = {
   width: '200px',
@@ -8,9 +8,9 @@ const imageContainerStyle = {
   overflow: 'hidden',
 };
 
-export const ImageContainer = ({ src, alt }) => {
+export const ImageContainer = ({ src, alt, onImageClick }) => {
   return (
-    <div style={imageContainerStyle}>
+    <div style={imageContainerStyle} onClick={onImageClick}>
       <img src={src} alt={alt} style={{ width: '100%', height: '100%' }} />
     </div>
   );
@@ -18,5 +18,6 @@ export const ImageContainer = ({ src, alt }) => {
 
 ImageContainer.propTypes = {
   alt: PropTypes.any,
+  onImageClick: PropTypes.any,
   src: PropTypes.any
 }
