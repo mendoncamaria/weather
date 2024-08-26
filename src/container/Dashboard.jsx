@@ -22,6 +22,10 @@ function Dashboard() {
     }
   };
 
+  const getImageCoordinates = (image) => {
+    console.log(image);
+  };
+
   return (
     <div style={{ display: 'flex' }}>
       <div
@@ -42,7 +46,11 @@ function Dashboard() {
           }}
         >
           {IMAGES.map((image) => (
-            <ImageContainer key={image.src} {...image} />
+            <ImageContainer
+              key={image.src}
+              {...image}
+              onImageClick={() => getImageCoordinates(image)}
+            />
           ))}
         </div>
       </div>
