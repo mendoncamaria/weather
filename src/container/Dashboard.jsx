@@ -1,7 +1,8 @@
 import Header from '../components/Header';
 import { useState } from 'react';
 import { ImageContainer } from '../components/ImageContainer';
-import { IMAGES } from '../data/constants';
+import { IMAGES, WEEK_FORECAST } from '../data/constants';
+import BlurredCard from '../components/Card';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
@@ -57,6 +58,33 @@ function Dashboard() {
               {...image}
               onImageClick={() => getImageCoordinates(image)}
             />
+          ))}
+        </div>
+        <div
+          style={{
+            display: 'grid',
+            rowGap: '25px',
+            columnGap: '30px',
+            justifyItems: 'start',
+            justifyContent: 'start',
+            gridTemplateColumns: 'auto auto auto auto auto',
+            paddingTop: '2rem',
+          }}
+        >
+          {WEEK_FORECAST.map((weather) => (
+            <BlurredCard key={weather.day}>
+              <div>
+                <p>{weather.day}</p>
+                <p>{weather.status}</p>
+                <div>
+                  <div>
+                    <p>{weather.wind} </p>
+                    <p>{weather.humidity} </p>
+                  </div>
+                  <div>{weather.temperature} </div>
+                </div>
+              </div>
+            </BlurredCard>
           ))}
         </div>
       </div>
