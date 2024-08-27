@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
 const imageContainerStyle = {
-  width: '200px',
-  height: '200px',
+  width: '100px',
+  height: '100px',
   borderRadius: '5px',
   backgroundColor: '#f0f0f0',
   overflow: 'hidden',
