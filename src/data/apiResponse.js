@@ -1,4 +1,4 @@
-export const success = {
+export const SUCCESS = {
   coord: {
     lon: 74.75,
     lat: 13.35,
