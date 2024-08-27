@@ -3,11 +3,18 @@ import { useState } from 'react';
 import { ImageContainer } from '../components/ImageContainer';
 import { IMAGES, WEEK_FORECAST } from '../data/constants';
 import BlurredCard from '../components/Card';
+import { getTodayAsNumber } from '../helper/utils';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
   const [userLatitude, setUserLatitude] = useState(null);
   const [userLongitude, setUserLongitude] = useState(null);
+
+  const todayIndex = getTodayAsNumber();
+
+  const rearrangedForecast = WEEK_FORECAST.slice(todayIndex).concat(
+    WEEK_FORECAST.slice(0, todayIndex)
+  );
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
@@ -71,7 +78,7 @@ function Dashboard() {
             paddingTop: '2rem',
           }}
         >
-          {WEEK_FORECAST.map((weather) => (
+          {rearrangedForecast.map((weather) => (
             <BlurredCard key={weather.day}>
               <div>
                 <p>{weather.day}</p>
