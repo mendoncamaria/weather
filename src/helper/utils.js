@@ -73,3 +73,8 @@ export function getTime() {
   const formattedTime = now.toLocaleString('en-IN', options);
   return formattedTime;
 }
+
+export function getTodayAsNumber() {
+  const today = new Date();
+  return today.getDay() === 0 ? 6 : today.getDay() - 1;
+}
