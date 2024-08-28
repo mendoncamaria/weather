@@ -96,3 +96,29 @@ export function getHumidityStatus(humidity) {
 
   return humidityStatusLookup[range];
 }
+
+export function getAirQualityStatus(aqi) {
+  let status, color;
+
+  if (aqi <= 50) {
+    status = 'Good';
+    color = 'green';
+  } else if (aqi <= 100) {
+    status = 'Moderate';
+    color = 'yellow';
+  } else if (aqi <= 150) {
+    status = 'Unhealthy for Sensitive Groups';
+    color = 'orange';
+  } else if (aqi <= 200) {
+    status = 'Unhealthy';
+    color = 'red';
+  } else if (aqi <= 300) {
+    status = 'Very Unhealthy';
+    color = 'purple';
+  } else {
+    status = 'Hazardous';
+    color = 'maroon';
+  }
+
+  return { status, color };
+}
