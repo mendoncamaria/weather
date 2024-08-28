@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import { useState } from 'react';
 import { ImageContainer } from '../components/ImageContainer';
-import { IMAGES, WEEK_FORECAST } from '../data/constants';
+import { IMAGES, TODAY_FORECAST, WEEK_FORECAST } from '../data/constants';
 import BlurredCard from '../components/Card';
 import { getTodayAsNumber } from '../helper/utils';
 
@@ -90,6 +90,35 @@ function Dashboard() {
                   </div>
                   <div>{weather.temperature} </div>
                 </div>
+              </div>
+            </BlurredCard>
+          ))}
+        </div>
+        <div
+          style={{
+            display: 'grid',
+            rowGap: '25px',
+            columnGap: '30px',
+            justifyItems: 'start',
+            justifyContent: 'start',
+            gridTemplateColumns: 'auto auto auto',
+            paddingTop: '2rem',
+          }}
+        >
+          {TODAY_FORECAST.map((weather) => (
+            <BlurredCard
+              key={weather.heading}
+              style={{
+                width: '350px',
+                height: '200px',
+              }}
+            >
+              <div>
+                <p>{weather.heading}</p>
+                <p>
+                  {weather.value} <span>{weather.unit}</span>
+                </p>
+                <p>{weather.remarks}</p>
               </div>
             </BlurredCard>
           ))}
