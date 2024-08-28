@@ -78,3 +78,24 @@ export const WEEK_FORECAST = [
     temperature: '26deg',
   },
 ];
+
+export const TODAY_FORECAST = [
+  {
+    heading: ' Humidity',
+    value: '20',
+    unit: '%',
+    remarks: 'Normal',
+  },
+  {
+    heading: 'Air Quality',
+    value: '73',
+    unit: '',
+    remarks: 'Poor',
+  },
+  {
+    heading: 'Visibility',
+    value: '6.3',
+    unit: 'km',
+    remarks: 'Average',
+  },
+];
