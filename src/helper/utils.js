@@ -122,3 +122,18 @@ export function getAirQualityStatus(aqi) {
 
   return { status, color };
 }
+
+export function getVisibilityStatus(visibility) {
+  // in km
+  if (visibility > 10) {
+    return 'Excellent visibility';
+  } else if (visibility > 5) {
+    return 'Good visibility';
+  } else if (visibility > 2) {
+    return 'Moderate visibility';
+  } else if (visibility > 1) {
+    return 'Poor visibility';
+  } else {
+    return 'Very poor visibility';
+  }
+}
