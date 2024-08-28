@@ -78,3 +78,21 @@ export function getTodayAsNumber() {
   const today = new Date();
   return today.getDay() === 0 ? 6 : today.getDay() - 1;
 }
+
+export function getHumidityStatus(humidity) {
+  const humidityStatusLookup = {
+    '0-20': 'Very Dry',
+    '21-39': 'Dry',
+    '40-60': 'Comfortable',
+    '61-75': 'Humid',
+    '76-90': 'Very Humid',
+    '91-100': 'Extremely Humid',
+  };
+
+  const range = Object.keys(humidityStatusLookup).find((range) => {
+    const [min, max] = range.split('-').map(Number);
+    return humidity >= min && humidity <= max;
+  });
+
+  return humidityStatusLookup[range];
+}
