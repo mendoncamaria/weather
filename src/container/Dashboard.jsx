@@ -4,6 +4,7 @@ import { ImageContainer } from '../components/ImageContainer';
 import { IMAGES, TODAY_FORECAST, WEEK_FORECAST } from '../data/constants';
 import BlurredCard from '../components/Card';
 import { getTodayAsNumber } from '../helper/utils';
+import { CiLocationOn } from 'react-icons/ci';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
@@ -33,20 +34,18 @@ function Dashboard() {
   };
 
   const getImageCoordinates = (value) => {
-    console.log(value);
     setUserLatitude(value.lat);
     setUserLongitude(value.lon);
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', height: '100vh' }}>
       {console.log(userLatitude, 'userLatitude')}
       {console.log(userLongitude, 'userLongitude')}
       <div
         style={{
           backgroundColor: '#f1f1f1',
           width: '70vw',
-          height: '100vh',
           padding: '2rem',
         }}
       >
@@ -128,7 +127,6 @@ function Dashboard() {
         style={{
           backgroundImage: 'url(src/assets/clouds.jpeg)',
           width: '30vw',
-          height: '100vh',
         }}
       >
         <button onClick={getUserLocation}>Get User Location</button>
@@ -139,6 +137,26 @@ function Dashboard() {
             <p>Longitude: {userLocation.longitude}</p>
           </div>
         )}
+        <div>Search</div>
+        <div
+          style={{
+            marginTop: '20vw',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <p>
+            <CiLocationOn /> Dhaka, Bangladesh
+          </p>
+          <p>19&deg;</p>
+          <p>Rainy</p>
+          <p>
+            <span>H:24%</span>
+            <span>W: 8km</span>
+          </p>
+        </div>
       </div>
     </div>
   );
