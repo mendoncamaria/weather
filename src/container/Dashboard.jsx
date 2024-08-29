@@ -4,7 +4,7 @@ import { ImageContainer } from '../components/ImageContainer';
 import { IMAGES, TODAY_FORECAST, WEEK_FORECAST } from '../data/constants';
 import BlurredCard from '../components/Card';
 import { getTodayAsNumber } from '../helper/utils';
-// import { CiLocationOn } from 'react-icons/ci';
+import { CiLocationOn } from 'react-icons/ci';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
@@ -137,22 +137,26 @@ function Dashboard() {
             <p>Longitude: {userLocation.longitude}</p>
           </div>
         )}
-        {/* <div>Search</div>
-             <div style={{
+        <div>Search</div>
+        <div
+          style={{
             marginTop: '20vw',
-              display: 'flex',
-                  flexDirection: 'column',
-              alignItems: 'center',
-             justifyContent: 'center'
-           }}>
-            <p><CiLocationOn /> Dhaka, Bangladesh</p>
-                <p>19&deg;</p>
-            <p>Rainy</p>
-              <p>
-              <span>H:24%</span>
-              <span>W: 8km</span>
-              </p>
-            </div> */}
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <p>
+            <CiLocationOn /> Dhaka, Bangladesh
+          </p>
+          <p>19&deg;</p>
+          <p>Rainy</p>
+          <p>
+            <span>H:24%</span>
+            <span>W: 8km</span>
+          </p>
+        </div>
       </div>
     </div>
   );
