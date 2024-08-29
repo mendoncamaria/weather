@@ -1,47 +1,46 @@
 import Header from '../components/Header';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ImageContainer } from '../components/ImageContainer';
 import { IMAGES, TODAY_FORECAST, WEEK_FORECAST } from '../data/constants';
 import BlurredCard from '../components/Card';
 import { getTodayAsNumber } from '../helper/utils';
 import { CiLocationOn } from 'react-icons/ci';
+import { KEYS } from '../keys/secret';
+import axios from 'axios';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
-  const [userLatitude, setUserLatitude] = useState(null);
-  const [userLongitude, setUserLongitude] = useState(null);
 
   const todayIndex = getTodayAsNumber();
-
   const rearrangedForecast = WEEK_FORECAST.slice(todayIndex).concat(
     WEEK_FORECAST.slice(0, todayIndex)
   );
 
-  const getUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude });
-        },
-        (error) => {
-          console.error('Error getting user location:', error);
-        }
-      );
-    } else {
-      console.error('Geolocation is not supported by this browser.');
+  useEffect(() => {
+    navigator.geolocation?.getCurrentPosition(
+      (position) => {
+        setUserLocation(position.coords);
+      },
+      (error) => console.error('Error getting user location:', error)
+    );
+  }, []);
+
+  const getWeather = async (lat, lon) => {
+    try {
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${KEYS.REACT_APP_API_WEATHER_KEY}`;
+      const response = await axios.get(url);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
     }
   };
 
-  const getImageCoordinates = (value) => {
-    setUserLatitude(value.lat);
-    setUserLongitude(value.lon);
+  const handleImageClick = (image) => {
+    getWeather(image.lat, image.lon);
   };
 
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
-      {console.log(userLatitude, 'userLatitude')}
-      {console.log(userLongitude, 'userLongitude')}
       <div
         style={{
           backgroundColor: '#f1f1f1',
@@ -62,7 +61,7 @@ function Dashboard() {
             <ImageContainer
               key={image.src}
               {...image}
-              onImageClick={() => getImageCoordinates(image)}
+              onImageClick={() => handleImageClick(image)}
             />
           ))}
         </div>
@@ -129,7 +128,6 @@ function Dashboard() {
           width: '30vw',
         }}
       >
-        <button onClick={getUserLocation}>Get User Location</button>
         {userLocation && (
           <div>
             <h2>User Location</h2>
