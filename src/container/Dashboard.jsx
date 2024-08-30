@@ -128,6 +128,7 @@ function Dashboard() {
           width: '30vw',
         }}
       >
+        <div>Search</div>
         {userLocation && (
           <div>
             <h2>User Location</h2>
@@ -135,7 +136,6 @@ function Dashboard() {
             <p>Longitude: {userLocation.longitude}</p>
           </div>
         )}
-        <div>Search</div>
         <div
           style={{
             marginTop: '20vw',
@@ -143,14 +143,21 @@ function Dashboard() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
+            color: 'white',
+            fontSize: '1.2rem',
+            gap: '10px'
           }}
         >
           <p>
             <CiLocationOn /> Dhaka, Bangladesh
           </p>
-          <p>19&deg;</p>
-          <p>Rainy</p>
-          <p>
+          <p style={{fontSize: '3.5rem', fontWeight: 'bold'}}>19&deg;</p>
+          <p style={{color: 'yellow'}}>Rainy</p>
+          <p style={{
+            display: 'flex',
+            gap: '15px',
+            fontSize: '1rem'
+          }}>
             <span>H:24%</span>
             <span>W: 8km</span>
           </p>
