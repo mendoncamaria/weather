@@ -10,6 +10,7 @@ import axios from 'axios';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
+  const [data, setData] = useState({});
 
   const todayIndex = getTodayAsNumber();
   const rearrangedForecast = WEEK_FORECAST.slice(todayIndex).concat(
@@ -20,6 +21,7 @@ function Dashboard() {
     navigator.geolocation?.getCurrentPosition(
       (position) => {
         setUserLocation(position.coords);
+        getWeather(position.coords.latitude, position.coords.longitude);
       },
       (error) => console.error('Error getting user location:', error)
     );
@@ -29,6 +31,7 @@ function Dashboard() {
     try {
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${KEYS.REACT_APP_API_WEATHER_KEY}`;
       const response = await axios.get(url);
+      setData(response.data);
       console.log(response.data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
@@ -129,39 +132,36 @@ function Dashboard() {
         }}
       >
         <div>Search</div>
-        {userLocation && (
-          <div>
-            <h2>User Location</h2>
-            <p>Latitude: {userLocation.latitude}</p>
-            <p>Longitude: {userLocation.longitude}</p>
+        {userLocation && data && (
+          <div
+            style={{
+              marginTop: '20vw',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'white',
+              fontSize: '1.2rem',
+              gap: '10px',
+            }}
+          >
+            <p>
+              <CiLocationOn /> Dhaka, Bangladesh
+            </p>
+            <p style={{ fontSize: '3.5rem', fontWeight: 'bold' }}>19&deg;</p>
+            <p style={{ color: 'yellow' }}>Rainy</p>
+            <p
+              style={{
+                display: 'flex',
+                gap: '15px',
+                fontSize: '1rem',
+              }}
+            >
+              <span>H:24%</span>
+              <span>W: 8km</span>
+            </p>
           </div>
         )}
-        <div
-          style={{
-            marginTop: '20vw',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white',
-            fontSize: '1.2rem',
-            gap: '10px'
-          }}
-        >
-          <p>
-            <CiLocationOn /> Dhaka, Bangladesh
-          </p>
-          <p style={{fontSize: '3.5rem', fontWeight: 'bold'}}>19&deg;</p>
-          <p style={{color: 'yellow'}}>Rainy</p>
-          <p style={{
-            display: 'flex',
-            gap: '15px',
-            fontSize: '1rem'
-          }}>
-            <span>H:24%</span>
-            <span>W: 8km</span>
-          </p>
-        </div>
       </div>
     </div>
   );
