@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import { useEffect, useState } from 'react';
 import { ImageContainer } from '../components/ImageContainer';
-import { IMAGES, TODAY_FORECAST, WEEK_FORECAST } from '../data/constants';
+import { IMAGES, WEEK_FORECAST } from '../data/constants';
 import BlurredCard from '../components/Card';
 import {
   errorResponse,
@@ -11,6 +11,7 @@ import {
 import { CiLocationOn } from 'react-icons/ci';
 import { KEYS } from '../keys/secret';
 import axios from 'axios';
+import TodayForecast from './TodayForecast';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
@@ -99,35 +100,7 @@ function Dashboard() {
             </BlurredCard>
           ))}
         </div>
-        <div
-          style={{
-            display: 'grid',
-            rowGap: '25px',
-            columnGap: '30px',
-            justifyItems: 'start',
-            justifyContent: 'start',
-            gridTemplateColumns: 'auto auto auto',
-            paddingTop: '2rem',
-          }}
-        >
-          {TODAY_FORECAST.map((weather) => (
-            <BlurredCard
-              key={weather.heading}
-              style={{
-                width: '350px',
-                height: '200px',
-              }}
-            >
-              <div>
-                <p>{weather.heading}</p>
-                <p>
-                  {weather.value} <span>{weather.unit}</span>
-                </p>
-                <p>{weather.remarks}</p>
-              </div>
-            </BlurredCard>
-          ))}
-        </div>
+        <TodayForecast />
       </div>
       <div
         style={{
