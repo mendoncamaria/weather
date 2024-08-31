@@ -61,7 +61,7 @@ function Header() {
         >
           °C
         </button>
-        <button
+        {/* <button
           style={{
             width: '40px',
             height: '40px',
@@ -77,7 +77,7 @@ function Header() {
           onClick={() => handleUnitChange('degF')}
         >
           °F
-        </button>
+        </button> */}
       </div>
     </div>
   );
