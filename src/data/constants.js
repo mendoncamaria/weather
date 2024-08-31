@@ -11,7 +11,7 @@ import Barcelona from '../assets/Barcelona.jpeg';
 
 export const IMAGES = [
   { src: London, alt: 'London', lat: '51.507351', lon: '-0.127758' },
-  { src: Dubai, alt: 'Dubai', lat: '25.204849', lon: '55.270782' },
+  { src: Dubai, alt: 'Dubai', lat: '25.276987', lon: '55.296249' },
   { src: Melbourne, alt: 'Melbourne', lat: '-37.813629', lon: '144.963058' },
   { src: NewYork, alt: 'New York', lat: '40.7127281', lon: '-74.0060152' },
   { src: Pretoria, alt: 'Pretoria', lat: '-25.7459277', lon: '28.1879101' },
@@ -24,7 +24,7 @@ export const IMAGES = [
   },
   { src: Paris, alt: 'Paris', lat: '48.856613', lon: '2.352222' },
   { src: HongKong, alt: 'Hong Kong', lat: '22.396427', lon: '114.109497' },
-  { src: Barcelona, alt: 'Barcelona', lat: '41.385063', lon: '2.173404' },
+  { src: Barcelona, alt: 'Barcelona', lat: '41.3874', lon: '2.1686' },
 ];
 
 export const WEEK_FORECAST = [

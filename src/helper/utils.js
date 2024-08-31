@@ -16,30 +16,21 @@ export function convertTimestampToTime(timestamp) {
 
 export function errorResponse(error) {
   let code = error.response.data.cod;
-
   switch (code) {
-    case '404':
-      console.log('City Not Found');
-      break;
-    case '400':
-      console.log('Bad Request');
-      break;
-    case '401':
-      console.log('Invalid Request!');
-      break;
-    case '403':
-      console.log('You are not allowed to access this service.');
-      break;
-    case '429':
-      console.log(
-        'Service experiencing high traffic. Please try again after sometime.'
-      );
-      break;
+    case 404:
+      return 'City Not Found';
+    case 400:
+      return 'Bad Request';
+    case 401:
+      return 'Invalid Request!';
+    case 403:
+      return 'You are not allowed to access this service.';
+    case 429:
+      return 'Service experiencing high traffic. Please try again after sometime.';
     case '500':
-      console.log('Internal Server Error');
-      break;
+      return 'Internal Server Error';
     default:
-      console.log('Something is wrong! Please try again later');
+      return 'Something is wrong! Please try again later';
   }
 }
 
