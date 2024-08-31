@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react';
 import { ImageContainer } from '../components/ImageContainer';
 import { IMAGES, TODAY_FORECAST, WEEK_FORECAST } from '../data/constants';
 import BlurredCard from '../components/Card';
-import { getTodayAsNumber } from '../helper/utils';
+import {
+  errorResponse,
+  getCountryByCode,
+  getTodayAsNumber,
+} from '../helper/utils';
 import { CiLocationOn } from 'react-icons/ci';
 import { KEYS } from '../keys/secret';
 import axios from 'axios';
@@ -29,12 +33,12 @@ function Dashboard() {
 
   const getWeather = async (lat, lon) => {
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${KEYS.REACT_APP_API_WEATHER_KEY}`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${KEYS.REACT_APP_API_WEATHER_KEY}`;
       const response = await axios.get(url);
       setData(response.data);
       console.log(response.data);
     } catch (error) {
-      console.error('Error fetching weather data:', error);
+      alert(errorResponse(error));
     }
   };
 
@@ -132,7 +136,7 @@ function Dashboard() {
         }}
       >
         <div>Search</div>
-        {userLocation && data && (
+        {userLocation && data.weather && (
           <div
             style={{
               marginTop: '20vw',
@@ -146,10 +150,12 @@ function Dashboard() {
             }}
           >
             <p>
-              <CiLocationOn /> Dhaka, Bangladesh
+              <CiLocationOn /> {data.name}, {getCountryByCode(data.sys.country)}
             </p>
-            <p style={{ fontSize: '3.5rem', fontWeight: 'bold' }}>19&deg;</p>
-            <p style={{ color: 'yellow' }}>Rainy</p>
+            <p style={{ fontSize: '3.5rem', fontWeight: 'bold' }}>
+              {data.main.temp.toFixed()}&deg;
+            </p>
+            <p style={{ color: 'yellow' }}>{data.weather[0].main}</p>
             <p
               style={{
                 display: 'flex',
@@ -157,8 +163,8 @@ function Dashboard() {
                 fontSize: '1rem',
               }}
             >
-              <span>H:24%</span>
-              <span>W: 8km</span>
+              <span>H: {data.main.humidity}%</span>
+              <span>W: {data.wind.speed.toFixed()}km</span>
             </p>
           </div>
         )}
