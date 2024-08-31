@@ -1,9 +1,27 @@
-// import React from 'react'
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import styled from "styled-components";
-import { TODAY_FORECAST } from "../data/constants";
-
-function TodayForecast() {
+function TodayForecast({ data }) {
+  const TODAY_FORECAST = [
+    {
+      heading: ' Humidity',
+      value: data?.main?.humidity,
+      unit: '%',
+      remarks: 'Normal',
+    },
+    {
+      heading: 'Air Quality',
+      value: '73',
+      unit: '',
+      remarks: 'Poor',
+    },
+    {
+      heading: 'Visibility',
+      value: Math.abs(data?.visibility / 1000),
+      unit: 'km',
+      remarks: 'Average',
+    },
+  ];
   return (
     <Today_Forecast_Container>
       {TODAY_FORECAST.map((weather) => (
@@ -21,7 +39,12 @@ function TodayForecast() {
   );
 }
 
+TodayForecast.propTypes = {
+  data: PropTypes.any,
+};
+
 export default TodayForecast;
+
 const Today_Forecast_Container = styled.div`
   display: flex;
   gap: 30px;
