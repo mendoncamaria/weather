@@ -137,7 +137,7 @@ export const DashboardContainer = styled.div`
 `;
 
 export const ForecastContainer = styled.div`
-  background-image: url(src/assets/clouds.jpeg);
+  background-image: url(src/assets/Barcelona.jpeg);
   width: 30vw;
 
   @media (max-width: 650px) {
