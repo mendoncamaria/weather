@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 
 const imageContainerStyle = {
-  width: '100px',
-  height: '100px',
   borderRadius: '5px',
   backgroundColor: '#f0f0f0',
   overflow: 'hidden',
+  flexWrap: 'wrap'
 };
 
 export const ImageContainer = ({ src, alt, onImageClick }) => {
