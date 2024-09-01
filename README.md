@@ -1,27 +1,45 @@
-# React + Vite
+# Weather Forecast Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is my personal favourite. This was the first project I integrated Public API and handled response in the UI. Please note:
+Multiple values are hardcoded for UI Design purpose.
 
-Currently, two official plugins are available:
+## About the Project
 
-<!-- - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh -->
+### Overview:
+On Landing, the website will first fetch your location (if enabled in browser) and give forecast for the same. There are two views:
+1. Laptop Dashboard - This is divided into two sections - Left hand side is the dashboard and Right Hand side is the forecast.
+2. Only Weather Updates - This is available only in mobile view.
 
+### Tech Stack
+ReactJS + Vite
 
-'npm run dev'
+### External Libraries
+1. styled-components: For styling the components and page
+2. react-icons: For displaying icons in the UI
+3. axios: For API call and handling
+<!-- 4.  -->
 
-<!-- ```
-<a href="https://www.freepik.com/free-photo/cloud-blue-sky_1017702.htm#query=sunny%20weather&position=0&from_view=keyword&track=ais">Image by jannoon028</a> on Freepik
+### Deployment Platform
+Vercel
 
-<a href="https://www.freepik.com/free-photo/white-cloud-blue-sky_3707296.htm#query=sunny%20weather&position=1&from_view=keyword&track=ais#position=1&query=sunny%20weather"> Image by lifeforstock </a>
+## Note:
+Do credit me if you plan to use this project. 
 
-<a href="https://www.freepik.com/free-vector/realistic-clouds-with-falling-rain_18309129.htm#query=rainy%20weather&position=15&from_view=search&track=ais">Image by starline</a> on Freepik
+### UI Improvements can be done(strikes are done):
+1. <p><s>Convert plain design to Dasboard</s></p>
+2. <p><s>Add Footer and redirection to portfolio</s></p>
+3. <p><s>Fix responsive design</s></p>
+4. <p>Add celsius and fahrenheit conversion</p>
+5. <p>Add min and max temperature</p>
+6. <p>Add sunrise and sunset</p>
+7. <p>Make background change according to weather</p>
+8. <p>Add dark mode during night. And light mode during day. Also keep switch to change</p>
+9. <p>Add search functionality</p>
 
-<a href="https://www.freepik.com/free-photo/view-snowy-mountain-fir-trees-with-blue-sky-background_20110211.htm#query=winter%20weather&position=10&from_view=search&track=ais">Image by h9images</a> on Freepik
+## Steps to Install
+1. Clone the project
+2. Run `npm install` to install all dependencies
+3. Run `npm run dev`
 
-<a href="https://www.freepik.com/free-photo/winter-landscape-mountain-village-ukrainian-carpathians-vibrant-night-sky-with-stars-nebula-galaxy-deep-sky-astrophoto_9143817.htm#query=winter%20weather%20night&position=6&from_view=search&track=ais">Image by standret</a> on Freepik
-
-<a href="https://www.freepik.com/free-photo/amazing-beautiful-sky-with-clouds_10472846.htm#query=rain%20weather%20night&position=1&from_view=search&track=ais">Image by user3802032</a> on Freepik
-
-Image by <a href="https://www.freepik.com/free-photo/low-angle-nature-night-time_5481670.htm#query=clear%20weather%20night&position=15&from_view=search&track=ais">Freepik</a>
-``` -->
+<hr />
+<center>&copy; Maria Mendonca</center>

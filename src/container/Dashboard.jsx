@@ -48,7 +48,7 @@ function Dashboard() {
             paddingTop: '2rem',
           }}
         >
-          Quick Forecast Service
+          Quick Forecast
         </h2>
         <div
           style={{
