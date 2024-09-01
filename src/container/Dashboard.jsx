@@ -1,26 +1,18 @@
 import Header from '../components/Header';
 import { useEffect, useState } from 'react';
 import { ImageContainer } from '../components/ImageContainer';
-import { IMAGES, WEEK_FORECAST } from '../data/constants';
-import BlurredCard from '../components/Card';
-import {
-  errorResponse,
-  getCountryByCode,
-  getTodayAsNumber,
-} from '../helper/utils';
+import { IMAGES } from '../data/constants';
+import { errorResponse, getCountryByCode } from '../helper/utils';
 import { CiLocationOn } from 'react-icons/ci';
 import { KEYS } from '../keys/secret';
 import axios from 'axios';
 import TodayForecast from './TodayForecast';
+import styled from 'styled-components';
+import WeekyForecast from './WeekyForecast';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
   const [data, setData] = useState({});
-
-  const todayIndex = getTodayAsNumber();
-  const rearrangedForecast = WEEK_FORECAST.slice(todayIndex).concat(
-    WEEK_FORECAST.slice(0, todayIndex)
-  );
 
   useEffect(() => {
     navigator.geolocation?.getCurrentPosition(
@@ -48,15 +40,16 @@ function Dashboard() {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh' }}>
-      <div
-        style={{
-          backgroundColor: '#f1f1f1',
-          width: '70vw',
-          padding: '2rem',
-        }}
-      >
+    <div style={{ display: 'flex', minHeight: '100vh', height: 'max-content' }}>
+      <DashboardContainer>
         <Header />
+        <h2
+          style={{
+            paddingTop: '2rem',
+          }}
+        >
+          Quick Forecast Service
+        </h2>
         <div
           style={{
             display: 'flex',
@@ -73,41 +66,26 @@ function Dashboard() {
             />
           ))}
         </div>
-        <div
+
+        <h2
           style={{
-            display: 'grid',
-            rowGap: '25px',
-            columnGap: '30px',
-            justifyItems: 'start',
-            justifyContent: 'start',
-            gridTemplateColumns: 'auto auto auto auto auto',
             paddingTop: '2rem',
           }}
         >
-          {rearrangedForecast.map((weather) => (
-            <BlurredCard key={weather.day}>
-              <div>
-                <p>{weather.day}</p>
-                <p>{weather.status}</p>
-                <div>
-                  <div>
-                    <p>{weather.wind} </p>
-                    <p>{weather.humidity} </p>
-                  </div>
-                  <div>{weather.temperature} </div>
-                </div>
-              </div>
-            </BlurredCard>
-          ))}
-        </div>
-        <TodayForecast />
-      </div>
-      <div
-        style={{
-          backgroundImage: 'url(src/assets/clouds.jpeg)',
-          width: '30vw',
-        }}
-      >
+          Weekly Prediction
+        </h2>
+        <WeekyForecast />
+        <h2
+          style={{
+            paddingTop: '2rem',
+          }}
+        >
+          Highlights
+        </h2>
+        <TodayForecast data={data} />
+      </DashboardContainer>
+
+      <ForecastContainer>
         <div>Search</div>
         {userLocation && data.weather && (
           <div
@@ -141,9 +119,28 @@ function Dashboard() {
             </p>
           </div>
         )}
-      </div>
+      </ForecastContainer>
     </div>
   );
 }
 
 export default Dashboard;
+
+export const DashboardContainer = styled.div`
+  background-color: #f1f1f1;
+  width: 70vw;
+  padding: 2rem;
+
+  @media (max-width: 650px) {
+    display: none;
+  }
+`;
+
+export const ForecastContainer = styled.div`
+  background-image: url(src/assets/clouds.jpeg);
+  width: 30vw;
+
+  @media (max-width: 650px) {
+    width: 100vw;
+  }
+`;

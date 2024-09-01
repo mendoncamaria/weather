@@ -23,7 +23,7 @@ function TodayForecast({ data }) {
     },
   ];
   return (
-    <Today_Forecast_Container>
+    <Container>
       {TODAY_FORECAST.map((weather) => (
         <Today_Forecast_Card key={weather.heading}>
           <div>
@@ -35,7 +35,7 @@ function TodayForecast({ data }) {
           </div>
         </Today_Forecast_Card>
       ))}
-    </Today_Forecast_Container>
+    </Container>
   );
 }
 
@@ -45,12 +45,12 @@ TodayForecast.propTypes = {
 
 export default TodayForecast;
 
-const Today_Forecast_Container = styled.div`
+const Container = styled.div`
   display: flex;
   gap: 30px;
   justify-items: start;
   justify-content: start;
-  padding-top: 2rem;
+  padding-top: 1rem;
 
   @media screen only and (min-width: 1100px) and (max-width: 1600px) {
   }
