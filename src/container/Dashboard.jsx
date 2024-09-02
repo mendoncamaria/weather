@@ -9,6 +9,7 @@ import axios from 'axios';
 import TodayForecast from './TodayForecast';
 import styled from 'styled-components';
 import WeekyForecast from './WeekyForecast';
+import BGIMG from '../assets/clouds.jpeg';
 
 function Dashboard() {
   const [userLocation, setUserLocation] = useState(null);
@@ -85,8 +86,8 @@ function Dashboard() {
         <TodayForecast data={data} />
       </DashboardContainer>
 
-      <ForecastContainer>
-        <div>Search</div>
+      <ForecastContainer image={`url(${BGIMG})`}>
+        {/* <div>Search</div> */}
         {userLocation && data.weather && (
           <div
             style={{
@@ -137,7 +138,7 @@ export const DashboardContainer = styled.div`
 `;
 
 export const ForecastContainer = styled.div`
-  background-image: url(src/assets/clouds.jpeg);
+  background-image: ${(props) => props.image};
   width: 30vw;
 
   @media (max-width: 650px) {

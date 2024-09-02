@@ -26,12 +26,41 @@ function TodayForecast({ data }) {
     <Container>
       {TODAY_FORECAST.map((weather) => (
         <Today_Forecast_Card key={weather.heading}>
-          <div>
-            <p>{weather.heading}</p>
-            <p>
-              {weather.value} <span>{weather.unit}</span>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+            }}
+          >
+            <p
+              style={{
+                color: '#6d6565',
+              }}
+            >
+              {weather.heading}
             </p>
-            <p>{weather.remarks}</p>
+            <p
+              style={{
+                fontSize: '4rem',
+              }}
+            >
+              {weather.value}{' '}
+              <span
+                style={{
+                  fontSize: '1.5rem',
+                }}
+              >
+                {weather.unit}
+              </span>
+            </p>
+            <p
+              style={{
+                color: '#6d6565',
+              }}
+            >
+              {weather.remarks}
+            </p>
           </div>
         </Today_Forecast_Card>
       ))}

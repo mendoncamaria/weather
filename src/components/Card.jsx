@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function BlurredCard({ children, style, color, ...props }) {
+function BlurredCard({ children, ...props }) {
   return (
     <div
       {...props}
@@ -10,9 +10,9 @@ function BlurredCard({ children, style, color, ...props }) {
         borderRadius: '10px',
         padding: '20px',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-        width: style ? style.width : '200px',
-        height: style ? style.height : '200px',
-        backgroundColor: color ?? 'transparent',
+        width: '200px',
+        height: '180px',
+        backgroundColor: 'transparent',
       }}
     >
       {children}
@@ -25,8 +25,8 @@ BlurredCard.propTypes = {
   color: PropTypes.string,
   style: PropTypes.shape({
     height: PropTypes.string,
-    width: PropTypes.string
-  })
-}
+    width: PropTypes.string,
+  }),
+};
 
 export default BlurredCard;
